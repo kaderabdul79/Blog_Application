@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <!-- header/footer -->
-    <Navigation />
+  <div id="wrapper">
+    <SiteSidebar />
+    
     <!-- router-view -->
     <router-view></router-view>
+    
+    <!-- footer -->  
+    <SiteFooter />
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue';
+import SiteFooter from './components/SiteFooter.vue';
+import SiteSidebar from './components/SiteSidebar.vue';
 export default {
-    components: { Navigation }
+    components: { SiteFooter, SiteSidebar }
 }
 </script>
 
