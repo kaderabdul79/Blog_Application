@@ -1,5 +1,5 @@
-<template>
-  <!-- sidebar -->
+<!-- <template>
+  
     <div class="sidebar" :class="{ showOverlay: overlayVisibility }">
       <span class="closeButton" @click="hideOverlay">&times;</span>
       <p class="brand-title"><a href="">Laravel with Vue Blog</a></p>
@@ -26,17 +26,17 @@
               >Contact</router-link
             >
           </li>
-          <li>
-            <router-link @click="hideOverlay" :to="{ name: 'Login' }"
-              >Login</router-link
-            >
-          </li>
-          <li>
+          <li v-if="!loggedIn">
             <router-link @click="hideOverlay" :to="{ name: 'Register' }"
               >Register</router-link
             >
           </li>
-          <li>
+          <li v-if="!loggedIn">
+            <router-link @click="hideOverlay" :to="{ name: 'Login' }"
+              >Login</router-link
+            >
+          </li>
+          <li v-if="loggedIn">
             <router-link @click="hideOverlay" :to="{ name: 'Dashboard' }"
               >Dashboard</router-link
             >
@@ -67,6 +67,7 @@ export default {
   data() {
     return {
       overlayVisibility: false,
+      loggedIn: false,
     };
   },
   methods: {
@@ -76,6 +77,16 @@ export default {
     hideOverlay() {
       this.overlayVisibility = false;
     },
+    updateSidebar() {
+      this.loggedIn = !this.loggedIn;
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("authenticated")) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
   },
 };
 </script>
@@ -84,4 +95,4 @@ export default {
   width: 100%;
   z-index: 5;
 }
-</style>
+</style> -->

@@ -29,14 +29,18 @@ export default {
       .then((response) => (this.name = response.data.name))
       .catch((error) => console.log(error));
   },
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       axios
-      .post("/api/logout")
-      .then((response) => (this.$router.push({name:'Home'})))
-      .catch((error) => console.log(error));
-  }
-  }
+        .post("/api/logout")
+        .then((response) => {
+          this.$router.push({ name: "Home" });
+          localStorage.removeItem("authenticated");
+          this.$emit("updateSidebar");
+        })
+        .catch((error) => console.log(error));
+    },
+  },
 };
 </script>
 
