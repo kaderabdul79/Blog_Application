@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    // insert new category data to database
     public function store(Request $request)
     {
         $request->validate([
@@ -18,5 +19,11 @@ class CategoryController extends Controller
         $category->name = $name;
 
         return $category->save();
+    }
+
+    // fetch latest all Categories
+    public function index()
+    {
+        return Category::latest()->get();
     }
 }

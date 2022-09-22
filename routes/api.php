@@ -16,5 +16,6 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // categories
 Route::middleware('auth:sanctum')->post('categories/create', [CategoryController::class, 'store']);
+Route::get('categories', [CategoryController::class, 'index']);
 
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
