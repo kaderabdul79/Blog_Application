@@ -7,6 +7,8 @@ import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue';
 import CreateCategories  from '../views/categories/CreateCategories.vue';
+import CategoriesList  from '../views/categories/CategoriesList.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,6 +56,12 @@ const router = createRouter({
       path: "/categories/create",
       name: "CreateCategories",
       component: CreateCategories,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/categories",
+      name: "CategoriesList",
+      component: CategoriesList,
       meta: { requiresAuth: true },
     },
   ]
