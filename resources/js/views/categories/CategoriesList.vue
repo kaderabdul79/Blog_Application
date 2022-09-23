@@ -12,7 +12,7 @@
           <router-link :to="{ name: 'EditCategories', params: { id: category.id } }">Edit</router-link>
         </div>
   
-        <input type="submit" value="Delete" />
+        <input type="button" value="Delete" @click="destroy(category.id)" />
       </div>
       <div class="index-categories">
         <router-link :to="{ name: 'CreateCategories' }"
@@ -39,6 +39,21 @@ import axios from 'axios';
           console.log(error);
         });
     },
+    methods: {
+      destroy(id) {
+        axios
+          .delete("/api/categories/" + id)
+          .then((response) => {
+            this.success = true;
+            setInterval(() => {
+              this.success = false;
+            }, 2500);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+    }
   };
   </script>
   
