@@ -32,12 +32,7 @@ import axios from 'axios';
       };
     },
     mounted() {
-      axios
-        .get("/api/categories")
-        .then((response) => (this.categories = response.data))
-        .catch((error) => {
-          console.log(error);
-        });
+      this.fetchCategories()
     },
     methods: {
       destroy(id) {
@@ -48,7 +43,16 @@ import axios from 'axios';
             setInterval(() => {
               this.success = false;
             }, 2500);
+            this.fetchCategories()
           })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      fetchCategories() {
+        axios
+          .get("/api/categories")
+          .then((response) => (this.categories = response.data))
           .catch((error) => {
             console.log(error);
           });
