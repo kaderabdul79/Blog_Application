@@ -8,6 +8,7 @@ import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue';
 import CreateCategories  from '../views/categories/CreateCategories.vue';
 import CategoriesList  from '../views/categories/CategoriesList.vue';
+import EditCategories  from '../views/categories/EditCategories.vue';
 
 
 const router = createRouter({
@@ -63,6 +64,13 @@ const router = createRouter({
       name: "CategoriesList",
       component: CategoriesList,
       meta: { requiresAuth: true },
+    },
+    {
+      path: "/categories/:id/edit",
+      name: "EditCategories",
+      component: EditCategories,
+      meta: { requiresAuth: true },
+      props: true
     },
   ]
 
