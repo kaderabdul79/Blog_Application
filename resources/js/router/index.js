@@ -6,9 +6,12 @@ import About from '../views/About.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue';
+// Categories
 import CreateCategories  from '../views/categories/CreateCategories.vue';
 import CategoriesList  from '../views/categories/CategoriesList.vue';
 import EditCategories  from '../views/categories/EditCategories.vue';
+// posts
+import CreatePosts from "../views/posts/CreatePosts.vue";
 
 
 const router = createRouter({
@@ -71,6 +74,12 @@ const router = createRouter({
       component: EditCategories,
       meta: { requiresAuth: true },
       props: true
+    },
+    {
+      path: "/posts/create",
+      name: "CreatePosts",
+      component: CreatePosts,
+      meta: { requiresAuth: true },
     },
   ]
 

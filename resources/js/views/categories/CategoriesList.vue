@@ -1,6 +1,9 @@
 <template>
     <div class="categories-list">
       <h1>Categories List</h1>
+      <!-- success message -->
+      <div class="success-msg" v-if="success">
+        <i class="fa fa-check"></i> Deleted successfully</div>
       <div
         class="item"
         v-for="(category, index) in categories"
