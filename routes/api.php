@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
@@ -24,5 +25,6 @@ Route::middleware('auth:sanctum')->delete('categories/{category}', [CategoryCont
 
 // posts
 Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
-
+// posts
+Route::get('home-posts', [HomeController::class, 'index']);
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
