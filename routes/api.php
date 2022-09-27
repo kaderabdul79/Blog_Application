@@ -25,6 +25,9 @@ Route::middleware('auth:sanctum')->delete('categories/{category}', [CategoryCont
 
 // posts
 Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
+
 // posts
 Route::get('home-posts', [HomeController::class, 'index']);
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
+
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);

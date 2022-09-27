@@ -12,7 +12,8 @@ import CategoriesList  from '../views/categories/CategoriesList.vue';
 import EditCategories  from '../views/categories/EditCategories.vue';
 // posts
 import CreatePosts from "../views/posts/CreatePosts.vue";
-
+// 
+import SingleBlog from '../views/SingleBlog.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,12 @@ const router = createRouter({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: "/blog/:slug",
+      name: "SingleBlog",
+      component: SingleBlog,
+      props: true,
     },
     {
       path: '/contact',
