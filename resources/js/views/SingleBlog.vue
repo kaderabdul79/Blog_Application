@@ -41,11 +41,12 @@
       </div>
     </section>
   </template>
-  <script>
-import axios from 'axios';
 
-  export default {
+<script>
+import axios from 'axios';
+ export default {
     props: ["slug"],
+    emits: ["updateSidebar"],
     data() {
       return {
         post: {},
@@ -60,4 +61,4 @@ import axios from 'axios';
         });
     },
   };
-  </script>
+</script>

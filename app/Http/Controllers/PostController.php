@@ -9,6 +9,12 @@ use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
+    // fetch all latest post
+    public function index()
+    {
+        return PostResource::collection(Post::latest()->get());
+    }
+
     // insert new post in post table
     public function store(Request $request)
     {
