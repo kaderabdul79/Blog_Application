@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RelatedPostController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -30,5 +31,7 @@ Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store'
 Route::get('home-posts', [HomeController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
+// related-posts
+Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
 
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
