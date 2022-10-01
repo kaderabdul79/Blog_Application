@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RelatedPostController;
+use App\Http\Controllers\DashboardPostController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -33,5 +34,6 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
 // related-posts
 Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
-
+// dashboard-posts
+Route::get('dashboard-posts', [DashboardPostController::class, 'index']);
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
