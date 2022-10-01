@@ -12,6 +12,8 @@ import CategoriesList  from '../views/categories/CategoriesList.vue';
 import EditCategories  from '../views/categories/EditCategories.vue';
 // posts
 import CreatePosts from "../views/posts/CreatePosts.vue";
+import DashboardPostsList from "../views/posts/DashboardPostsList.vue";
+
 // 
 import SingleBlog from '../views/SingleBlog.vue'
 
@@ -86,6 +88,12 @@ const router = createRouter({
       path: "/posts/create",
       name: "CreatePosts",
       component: CreatePosts,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/dashboard-posts",
+      name: "DashboardPostsList",
+      component: DashboardPostsList,
       meta: { requiresAuth: true },
     },
   ]
