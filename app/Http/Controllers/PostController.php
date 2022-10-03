@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -54,5 +55,36 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return new PostResource($post);
+    }
+
+    // update specific post
+    public function update(Request $request, Post $post)
+    {
+        $request->validate([
+            'title' => 'required',
+            'file' => 'nullable | image',
+            'body' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $title = $request->title;
+        $category_id = $request->category_id;
+
+
+        $slug = Str::slug($title, '-') . '-' . $post->id;
+        $body = $request->input('body');
+
+        if ($request->file('file')) {
+            File::delete($post->imagePath);
+            $imagePath = 'storage/' . $request->file('file')->store('postsImages', 'public');
+            $post->imagePath = $imagePath;
+        }
+
+        // create and save post
+        $post->title = $title;
+        $post->category_id = $category_id;
+        $post->slug = $slug;
+        $post->body = $body;
+        return $post->save();
     }
 }

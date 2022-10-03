@@ -33,6 +33,8 @@ Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store'
 Route::get('home-posts', [HomeController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
+Route::middleware('auth:sanctum')->put('posts/{post:slug}', [PostController::class, 'update']);
+
 // related-posts
 Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
 // dashboard-posts

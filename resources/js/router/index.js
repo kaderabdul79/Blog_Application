@@ -13,6 +13,7 @@ import EditCategories  from '../views/categories/EditCategories.vue';
 // posts
 import CreatePosts from "../views/posts/CreatePosts.vue";
 import DashboardPostsList from "../views/posts/DashboardPostsList.vue";
+import EditPosts from "../views/posts/EditPosts.vue";
 
 // 
 import SingleBlog from '../views/SingleBlog.vue'
@@ -89,6 +90,13 @@ const router = createRouter({
       name: "CreatePosts",
       component: CreatePosts,
       meta: { requiresAuth: true },
+    },
+    {
+      path: "/posts/:slug/edit",
+      name: "EditPosts",
+      component: EditPosts,
+      meta: { requiresAuth: true },
+      props: true
     },
     {
       path: "/dashboard-posts",
