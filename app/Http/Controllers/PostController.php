@@ -54,12 +54,22 @@ class PostController extends Controller
     // show single post
     public function show(Post $post)
     {
+        // if not authenticate user,going to edit the post , will return forbidden.
+        if (auth()->user()->id !== $post->user->id) {
+            return abort(403);
+        }
+
         return new PostResource($post);
     }
 
     // update specific post
     public function update(Request $request, Post $post)
     {
+        // if not authenticate user,going to update the post , will return forbidden.
+        if (auth()->user()->id !== $post->user->id) {
+            return abort(403);
+        }
+
         $request->validate([
             'title' => 'required',
             'file' => 'nullable | image',
