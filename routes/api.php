@@ -34,6 +34,7 @@ Route::get('home-posts', [HomeController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
 Route::middleware('auth:sanctum')->put('posts/{post:slug}', [PostController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('posts/{post:slug}', [PostController::class, 'destroy']);
 
 // related-posts
 Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
