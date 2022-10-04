@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
@@ -11,8 +12,11 @@ use Illuminate\Support\Facades\File;
 class PostController extends Controller
 {
     // fetch all latest post
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->category) {
+            return PostResource::collection(Category::where('name', $request->category)->firstOrFail()->posts()->latest()->get());
+        }
         return PostResource::collection(Post::latest()->get());
     }
 
