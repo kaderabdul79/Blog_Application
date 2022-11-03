@@ -5,7 +5,7 @@
 ### Live Site Link : https://blog.kaderabdul.com/build/
 
 # blogpage
-![made with laravel and vue project showcase](blogpage.png.png)
+![made with laravel and vue project showcase](blogpage.png)
 # dashboard
 ![made with laravel and vue project showcase](dashboard.png)
 # Post List
