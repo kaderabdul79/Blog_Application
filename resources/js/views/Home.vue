@@ -33,21 +33,21 @@ import axios from 'axios';
 import SiteHeader from '../components/SiteHeader.vue';
 
 export default {
-  emits: ["updateSidebar"],
-  data() {
-    return {
-      posts: [],
-    };
-  },
-
-  mounted() {
-    axios
-      .get("/api/home-posts")
-      .then((response) => (this.posts = response.data.data))
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+    emits: ["updateSidebar"],
+    data() {
+        return {
+            posts: [],
+        };
+    },
+    mounted() {
+        axios
+            .get("/api/home-posts")
+            .then((response) => (this.posts = response.data.data))
+            .catch((error) => {
+            console.log(error);
+        });
+    },
+    components: { SiteHeader }
 };
 </script>
 
